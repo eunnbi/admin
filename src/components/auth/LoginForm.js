@@ -44,10 +44,7 @@ export default function LoginForm() {
     });
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/login", {
-        email,
-        password,
-      });
+      const { data } = await axios.get(`/api/login?email=${email}&password=${password}`);
       setLoading(false);
       if (data.success) {
         const expires = new Date();
