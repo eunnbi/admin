@@ -2,8 +2,8 @@ import { db } from "@/lib/database";
 import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
-    if (req.method === 'GET') {
-      const { email, password } = req.query;
+    if (req.method === 'POST') {
+      const { email, password } = req.body;
       try {
         const admin = await db.ADMIN.findOne({
           where: { email: email, password: password },
