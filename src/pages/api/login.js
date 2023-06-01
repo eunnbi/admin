@@ -17,14 +17,14 @@ export default async function handler(req, res) {
             expiresIn: '1d',
             issuer: 'MixBowl',
           });
-          return res.status(200).json({ success: true, accessToken });
+          res.status(200).json({ success: true, accessToken });
         } else {
-          return res.status(400).json({ success: false });
+          res.status(400).json({ success: false });
         }
       } catch (error) {
-        return res.status(400).json({ success: false, error });
+        res.status(400).json({ success: false, error });
       }
     } else {
-      return res.status(404).json({ success: false });
+      res.status(404).json({ success: false });
     }
   }
