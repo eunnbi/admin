@@ -20,7 +20,6 @@ export default function DeleteModal({ id, type }) {
     catch(e) {
       console.log(e);
     }
-
   }
   return (
     <>

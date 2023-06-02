@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/server/*"
-  to = "https://mixbowl-skku.com/api/*"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
