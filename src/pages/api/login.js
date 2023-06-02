@@ -1,9 +1,10 @@
+const jwt = require('jsonwebtoken');
 import { db } from "@/lib/database";
-import jwt from 'jsonwebtoken';
+
 
 export default async function handler(req, res) {
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
     const admin = await db.ADMIN.findOne({
       where: { email: email, password: password },
     });
@@ -16,12 +17,11 @@ export default async function handler(req, res) {
         expiresIn: '1d',
         issuer: 'MixBowl',
       });
-      res.status(200).json({ success: true, accessToken });
+      return res.status(200).json({ success: true, accessToken });
     } else {
-      res.status(400).json({ success: false });
+      return res.status(400).json({ success: false });
     }
-    res.status(400).json({ success: false });
   } catch (error) {
-    res.status(400).json({ success: false, error });
+    return res.status(400).json({ success: false, error });
   }
 }
