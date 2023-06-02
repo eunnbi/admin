@@ -44,7 +44,7 @@ export default function LoginForm() {
     });
     setLoading(true);
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/server/admin/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers:{
