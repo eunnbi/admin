@@ -56,6 +56,12 @@ export default function LoginForm() {
       if (data.success) {
         setSuccess(true);
         Router.push("/");
+        const expires = new Date();
+        expires.setHours(expires.getHours() + 23);
+        setCookie("token", data.accessToken, {
+          secure: true,
+          expires
+        })
       }
       else {
         setSuccess(false);
