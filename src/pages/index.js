@@ -9,7 +9,6 @@ import ReportChart from "@/components/report/ReportChart";
 
 export default function Home({ data, type, token }) {
   useEffect(() => {
-    console.log(token);
     if (token) {
       axios.defaults.headers.common.Authorization = token;
     }

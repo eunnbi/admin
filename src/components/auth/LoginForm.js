@@ -51,21 +51,17 @@ export default function LoginForm() {
           'Content-Type': 'application/json'
         }
       });
-      const data = await response.json();
       setLoading(false);
-      if (data.success) {
-        const expires = new Date();
-        expires.setHours(expires.getHours() + 23);
-        setCookie("token", data.accessToken, {
-          secure: true,
-          expires,
-        });
+      if (response.redirected) {
         setSuccess(true);
         Router.push("/");
-      } else {
+      }
+      else {
         setSuccess(false);
       }
+      console.log(response);
     } catch (e) {
+      console.log(e);
       setLoading(false);
       setSuccess(false);
     }
